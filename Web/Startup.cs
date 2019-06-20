@@ -30,7 +30,7 @@ namespace Web
                 options.CheckConsentNeeded = context => true;
             });
 
-
+            services.AddMemoryCache();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

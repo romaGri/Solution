@@ -19,40 +19,7 @@ namespace Web.Controllers
         {
             db = context;
         }
-
-        //public async Task<IActionResult> Index()
-        //{
-        //    int page = 1;
-        //    int pageSize = 30;   // количество элементов на странице
-
-        //    var source = db.Torrents.Take(pageSize).ToList();
-        //    var count = await db.Torrents.CountAsync();
-        //    PageInfo pageViewModel = new PageInfo(count, page, pageSize);
-        //    TorrentViewModel viewModel = new TorrentViewModel
-        //    {
-        //        PageInfo = pageViewModel,
-        //        torrents = source
-        //    };
-        //    return View("Index", viewModel);
-        //}
-
-        //public async Task<IActionResult> PageHelper(string s, int page = 1)
-        //{
-        //    int pageSize = 30;
-        //    var query = db.Torrents.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%"));
-        //    var count = await query.CountAsync();
-        //    var torents = await query.Skip((page - 1) * pageSize).Take(pageSize).ToArrayAsync();
-        //    PageInfo pageViewModel = new PageInfo(count, page, pageSize);
-        //    TorrentViewModel viewModel = new TorrentViewModel
-        //    {
-        //        PageInfo = pageViewModel,
-        //        torrents = torents,
-        //        SearchString = s
-        //    };
-        //    return View(viewModel);
-        //}
-
-//Delete me please
+        
         public async Task<IActionResult> Index(string s, int page = 1)
         {
             IQueryable<Torrent> query;
@@ -63,7 +30,8 @@ namespace Web.Controllers
                 count = await db.Torrents.CountAsync();
                 query = db.Torrents.Take(count);
             }
-            else{
+            else
+            {
                 query = db.Torrents.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%"));
                 count = await query.CountAsync();
             }

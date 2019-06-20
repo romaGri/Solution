@@ -22,13 +22,16 @@ namespace FunctionalTests.Web.Controllers
         }
 
         [Fact]
-        public async Task HomeControllerActionTestAsync()
+        public void HomeControllerActionTestAsync()
         {
             // Arrange
-            string result = "1";
+            var mockRepo = new Mock<torrentsdbContext>();
+            var controller = new HomeController(mockRepo.Object);
 
-            //Action
-            
+            // Act
+            var result =  controller.Index("");
+
+            // Assert
             Assert.NotNull(result);
         }
     }
