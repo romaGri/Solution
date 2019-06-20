@@ -60,9 +60,10 @@ namespace Web.Controllers
             int pageSize = 30;   // количество элементов на странице
             if (s == null)
             {
-                query = db.Torrents.Take(pageSize);
                 count = await db.Torrents.CountAsync();
-            }else{
+                query = db.Torrents.Take(count);
+            }
+            else{
                 query = db.Torrents.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%"));
                 count = await query.CountAsync();
             }
