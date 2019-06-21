@@ -45,7 +45,7 @@ namespace Web.Controllers
                 torrents = torents,
                 SearchString = s
             };
-            var source = db.Torrents.Take(pageSize).ToList();
+           // var source = db.Torrents.Take(pageSize).ToList();
 
             return View(viewModel);
         }
