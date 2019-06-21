@@ -12,7 +12,7 @@ namespace TorrentsWebApp.Helpers
             string result = "<details> <ul>";
             foreach (var item in items)
             {
-                result += $"<li>{item.Name + " Размер " + int.Parse(item.Size)/1024 + " Kb" }</li>";
+                result += $"<li>{item.Name + " Размер " + long.Parse(item.Size)/1024 + " Kb" }</li>";
             }
             result += "</ul></details>";
             return new HtmlString(result);
