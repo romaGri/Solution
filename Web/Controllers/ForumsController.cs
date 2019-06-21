@@ -18,7 +18,7 @@ namespace Web.Controllers
             this.db = db;
         }
 
-        public IActionResult IndexF(int page = 1)
+        public IActionResult Index(int page = 1)
         {
             // IQueryable<Torrent> query;
           
@@ -38,7 +38,7 @@ namespace Web.Controllers
             return View(viewModel);
         }
 
-        [Route("IndexF/{id:int}")]
+        [Route("Index/{id:int}")]
         public IActionResult Torrents(int id, int page = 1)
         {
             var query = db.Torrents.Where(t => t.ForumId == id).ToArray();
