@@ -4,37 +4,18 @@
 }
 
 @model ForumsViewModel
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
 
-        td, th {
-            padding: 3px;
-            border: 1px solid #000; /* Параметры рамки */
-        }
-
-        th {
-            background: #afd792;
-            color: #333; /* Цвет текста */
-        }
-
-        tbody tr:hover {
-            background: #f3bd48; /* Цвет фона при наведении */
-            color: #fff; /* Цвет текста при наведении */
-        }
-    </style>
+<link href="~/css/site.css" rel="stylesheet" />
 <table class="table">
-    <tr >
+    <tr>
         <td> ID</td>
         <td>Название</td>
     </tr>
     @foreach (var i in Model.Forums)
     {
         <tr>
-            <td><a href="../IndexF/@i.ForumId" />@i.ForumId</td>
-            <td><a href="../IndexF/@i.ForumId"/> @i.Value</td>
+            <td><a href="../Forums/@i.ForumId" />@i.ForumId</td>
+            <td><a href="../Forums/@i.ForumId" /> @i.Value</td>
 
         </tr>
     }

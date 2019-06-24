@@ -73,6 +73,7 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
+    color: blue;
 }
 
 td, th {

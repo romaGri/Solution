@@ -12,7 +12,7 @@ namespace Web.Controllers
     public class ForumsController : Controller
     {
         torrentsdbContext db;
-        int _pageSize = 50;
+        int _pageSize = 30;
         public ForumsController(torrentsdbContext db)
         {
             this.db = db;
@@ -20,10 +20,6 @@ namespace Web.Controllers
 
         public IActionResult Index(int page = 1)
         {
-            // IQueryable<Torrent> query;
-          
-          
-
             var count = db.Forums.Count();
             var query = db.Forums.Take(count);
 
@@ -38,7 +34,7 @@ namespace Web.Controllers
             return View(viewModel);
         }
 
-        [Route("Index/{id:int}")]
+        [Route("/Forums/{id:int}/")]
         public IActionResult Torrents(int id, int page = 1)
         {
             var query = db.Torrents.Where(t => t.ForumId == id).ToArray();
@@ -48,7 +44,7 @@ namespace Web.Controllers
             TorrentViewModel viewModel = new TorrentViewModel
             {
                 PageInfo = pageViewModel,
-                torrents = torents,
+                torrents = query
             };
             return View("/Views/Home/Index.cshtml", viewModel);
         }
