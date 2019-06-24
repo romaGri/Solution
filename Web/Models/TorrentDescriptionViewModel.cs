@@ -8,9 +8,12 @@ namespace Web.Models
 {
     public class TorrentDescriptionViewModel : TorrentViewModel
     {
+        public int ForumId { get; set;}
+        public IEnumerable<Torrent> Torrents { get;set; }
         public string Content { get; set; }
         public string Dir { get; set; }
-        public Forum Forum { get; set; }
+        public string Forums { get; set; }
+        public string Title { get;set; }
         public IEnumerable<File> Files { get; set; }
     }
 }

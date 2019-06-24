@@ -15,8 +15,8 @@ namespace ApplicationCore.Entities
         public int? TrackerId { get; set; }
         public string Content { get; set; }
         public string Dir { get; set; }
-        public int? ForumId { get; set; }
-        public virtual Forum Forum { get; set; }
+        public int ForumId { get; set; }
+        public virtual Forum Forums { get; set; }
         public bool Del { get; set; }
         public virtual ICollection<File> Files { get; set; }
 
