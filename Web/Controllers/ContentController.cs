@@ -19,6 +19,7 @@ namespace TorrentsWebApp.Controllers
         public IActionResult Content(int id)
         {
             var torrent = db.Torrents.FirstOrDefault(c => c.TorrentId == id);
+           
             torrent.Content = BBCodeHelper.Format(torrent.Content);
             torrent.Files = db.Files.Where(f => f.TorrentId == id).ToArray();
 

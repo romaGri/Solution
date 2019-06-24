@@ -34,7 +34,7 @@ namespace Web.Controllers
             return View(viewModel);
         }
 
-        [Route("/Forums/{id:int}/")]
+        [Route("/Forums/{id:int}")]
         public IActionResult Torrents(int id, int page = 1)
         {
             var query = db.Torrents.Where(t => t.ForumId == id).ToArray();
@@ -44,9 +44,9 @@ namespace Web.Controllers
             TorrentViewModel viewModel = new TorrentViewModel
             {
                 PageInfo = pageViewModel,
-                torrents = query
+                torrents = torents
             };
-            return View("/Views/Home/Index.cshtml", viewModel);
+            return View(viewModel);
         }
     }
 }
