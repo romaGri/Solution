@@ -4,37 +4,40 @@
 }
 
 @model ForumsViewModel
-
-<link href="~/css/site.css" rel="stylesheet" />
-<table class="table">
-    <tr>
-        <td> ID</td>
-        <td>Название</td>
-    </tr>
-    @foreach (var i in Model.Forums)
-    {
+<head>
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <table class="table">
         <tr>
-            <td><a href="../Forums/@i.ForumId" />@i.ForumId</td>
-            <td><a href="../Forums/@i.ForumId" /> @i.Value</td>
-
+            <td> ID</td>
+            <td>Название</td>
         </tr>
+        @foreach (var i in Model.Forums)
+        {
+            <tr>
+                <td><a href="../Forums/@i.ForumId" />@i.ForumId</td>
+                <td><a href="../Forums/@i.ForumId" /> @i.Value</td>
+
+            </tr>
+        }
+    </table>
+    @if (Model.PageInfo.HasPreviousPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageInfo.PageNumber - 1)"
+           class="btn btn-default btn">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Назад
+        </a>
     }
-</table>
-@if (Model.PageInfo.HasPreviousPage)
-{
-    <a asp-action="Index"
-       asp-route-page="@(Model.PageInfo.PageNumber - 1)"
-       class="btn btn-default btn">
-        <i class="glyphicon glyphicon-chevron-left"></i>
-        Назад
-    </a>
-}
-@if (Model.PageInfo.HasNextPage)
-{
-    <a asp-action="Index"
-       asp-route-page="@(Model.PageInfo.PageNumber + 1)"
-       class="btn btn-default btn">
-        Вперед
-        <i class="glyphicon glyphicon-chevron-right"></i>
-    </a>
-}
+    @if (Model.PageInfo.HasNextPage)
+    {
+        <a asp-action="Index"
+           asp-route-page="@(Model.PageInfo.PageNumber + 1)"
+           class="btn btn-default btn">
+            Вперед
+            <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    }
+</body>
