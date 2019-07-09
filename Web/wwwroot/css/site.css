@@ -93,24 +93,16 @@ header {
 
 
 footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    line-height: 67px;
+    line-height: 47px;
     background-color: #fcd566;
-    box-shadow: 0 -0.1rem 0.75rem rgb(158, 32, 32);
+    box-shadow: 0 0.25rem 0.75rem rgb(158, 32, 32);
 }
 /*----------------------------------------------------------eeeeeeeeeee----------------------------------------------------------*/
 table {
     width: 100%;
     border-collapse: collapse;
 }
-.table {
-    width: 92%;
-    margin-bottom: 1rem;
-    color: #212529;
-    margin: auto;
-}
+
 tr{
     color:#768d49
 }
@@ -128,8 +120,8 @@ th {
 
 tbody tr:hover {
     background: #e6e21c83;
-    ;
     color: rgb(0, 0, 0);
+   
 }
 
 .btn {
@@ -156,36 +148,3 @@ tbody tr:hover {
     display: block;
     height: 50px;
 }
-.container_body {
-    padding-block-end: 95px;
-}
-.search{
-    padding-top:15px;
-}
-.input_search {
-    position: absolute;
-    top: 6%;
-    left: 7%;
-    transform: translate(50%, -50%);
-    background: #2f3640;
-    height: 35px;
-    border-radius: 19px;
-    padding: 1px;
-    border:none;
-}
-.search-btn {
-    float: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border:none;
-    background: rgb(7, 255, 81);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
-}
-/*.container{
-    padding-block-end: 95px;
-}*/

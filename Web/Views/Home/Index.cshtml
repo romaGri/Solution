@@ -6,18 +6,18 @@
 @model TorrentViewModel
 <head>
     <link rel="stylesheet" href="~/wwwroot/css/site.css">
+    <script src="https://kit.fontawesome.com/5602962e66.js"></script>
 </head>
 <body>
-    <div class="search">
-        <form asp-controller="Home" asp-action="Index" method="get">
-            <p>
-                <input class="input_search" type="text" name="s">
-                <input class="search-btn" type="submit" value="" />
-            </p>
-        </form>
-    </div>
-   
-
+<div class="search-box">
+    <form asp-controller="Home" asp-action="Index" method="get">
+        
+         <input class="search-txt" type="text" name="s">
+            <input class="search-btn" type="submit" value="" />
+            
+      
+    </form>
+</div>
     @if (Model.torrents.Any())
     {
         @if (!string.IsNullOrEmpty(Model.SearchString))
@@ -65,11 +65,12 @@
                     <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
             }
-           
+            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
         </div>
     }
     else
     {
         <div>Увы, ничего не найдено</div>
+        <input class="back_button" type="button" value=" Назад" onClick='history.go(-1)'>
     }
 </body>
