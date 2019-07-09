@@ -1,6 +1,6 @@
 ﻿@using Web.Models
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Forum Page";
 }
 
 @model ForumsViewModel
@@ -22,7 +22,8 @@
             </tr>
         }
     </table>
-    @if (Model.PageInfo.HasPreviousPage)
+    <div class="nav_btn">
+ @if (Model.PageInfo.HasPreviousPage)
     {
         <a asp-action="Index"
            asp-route-page="@(Model.PageInfo.PageNumber - 1)"
@@ -40,4 +41,6 @@
             <i class="glyphicon glyphicon-chevron-right"></i>
         </a>
     }
+    </div>
+   
 </body>

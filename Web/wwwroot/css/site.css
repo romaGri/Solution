@@ -9,10 +9,13 @@ a.navbar-brand {
 
 a {
     color: rgb(85, 141, 0);
+    text-align: center;
 }
 
 a:visited {
     color: rgb(85, 141, 0);
+    text-align: center;
+
 }
 
 a:active {
@@ -77,7 +80,8 @@ body {
     margin: 0;
  padding: 0;
 
-    background:  #ffffff 
+    background:  #ffffff ;
+    padding-block-end: 40px;
 }
 
 header {
@@ -93,7 +97,10 @@ header {
 
 
 footer {
-    
+    position:absolute;
+    bottom:0;
+    width:100%;
+    bottom:0;
     line-height: 47px;
     background-color: #fcd566;
     box-shadow: 0 0.25rem 0.75rem rgb(158, 32, 32);
@@ -154,8 +161,66 @@ tbody tr:hover {
     padding-right:50px;
 }
 .container_body{
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 100px;
     padding-right: 100px;
 }
+.nav_btn{
+    text-align: center;
+}
+.search-box{
+    text-align: center;
+    margin-left: 110px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+}
+
+.search-box:hover > .search-txt {
+    width: 240px;
+    padding: 0 6px;
+   }
+   
+   .search-box:hover > .search-btn {
+    background: white;
+    color: black;
+   }
+   
+   .search-btn {
+    color: #e84118;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+    color: white;
+    cursor: pointer;
+   }
+   
+   .search-btn > i {
+    font-size: 30px;
+   }
+   
+   .search-txt {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    font-weight: bold;
+   }   
