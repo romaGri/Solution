@@ -182,12 +182,12 @@ tbody tr:hover {
     border-radius: 40px;
 }
 
-.search-box:hover > .search-txt {
+.search-box:hover  .search-txt {
     width: 240px;
     padding: 0 6px;
    }
    
-   .search-box:hover > .search-btn {
+   .search-box:hover  .search-btn {
     background: white;
     color: black;
    }
@@ -207,7 +207,7 @@ tbody tr:hover {
     cursor: pointer;
    }
    
-   .search-btn > i {
+   .search-btn > input {
     font-size: 30px;
    }
    
