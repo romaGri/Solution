@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="~/wwwroot/css/site.css">
 </head>
 <body>
-
-    <form asp-controller="Home" asp-action="Index" method="get">
-        <p>
-            Title: <input type="text" name="s">
-            <input type="submit" value="Search" />
-        </p>
-    </form>
+    <div class="search">
+        <form asp-controller="Home" asp-action="Index" method="get">
+            <p>
+                <input class="input_search" type="text" name="s">
+                <input class="search-btn" type="submit" value="" />
+            </p>
+        </form>
+    </div>
+   
 
     @if (Model.torrents.Any())
     {
@@ -63,7 +65,7 @@
                     <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
             }
-            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+           
         </div>
     }
     else
