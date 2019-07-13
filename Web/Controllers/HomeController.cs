@@ -19,16 +19,21 @@ namespace Web.Controllers
         {
             db = context;
         }
-        public async Task<IActionResult> Index(string s, int page = 1)
+        public async Task<IActionResult> Index(string s, int page = 1, bool del = false)
         {
             IQueryable<Torrent> query;
             int count;
             int pageSize = 30;   // количество элементов на странице
-            if (s == null)
+            if (s == null && del == false)
             {
                 count = await db.Torrents.CountAsync();
-                query = db.Torrents.Take(count).OrderByDescending(i=>i.RegistredAt);
+                query = db.Torrents.Take(count).Where(t => t.Del == false).OrderByDescending(i=>i.RegistredAt);
             }
+            if (s == null && del == true)
+           {
+               count = await db.Torrents.CountAsync();
+               query = db.Torrents.Take(count).OrderByDescending(i=>i.RegistredAt);
+           }
             else
             {
                 query = db.Torrents.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%"));

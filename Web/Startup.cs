@@ -21,7 +21,7 @@ namespace Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            string connection = Configuration.GetConnectionString("DefaultConnection2");
+            string connection = Configuration.GetConnectionString("DefaultConnection1");
             services.AddDbContext<torrentsdbContext>(o => o.UseSqlServer(connection));
 
             services.Configure<CookiePolicyOptions>(options =>
