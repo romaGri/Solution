@@ -9,15 +9,7 @@
     <script src="https://kit.fontawesome.com/5602962e66.js"></script>
 </head>
 <body>
-<div class="search-box">
-    <form asp-controller="Home" asp-action="Index" method="get">
-        
-         <input class="search-txt" type="text" name="s">
-            <input class="search-btn" type="submit" value="" />
-            
-      
-    </form>
-</div>
+
     @if (Model.torrents.Any())
     {
         @if (!string.IsNullOrEmpty(Model.SearchString))
@@ -33,14 +25,14 @@
                 <tr>
                     <td> ID
                     <td>Название
-                    <td>Tracker ID</td>
+                    <td>Дата Регистрации</td>
                 </tr>
                 @foreach (var i in Model.torrents)
                 {
                     <tr>
                         <td><a href="../Content/@i.TorrentId" />@i.Id</td>
                         <td><a href="../Content/@i.TorrentId" /> @i.Title</td>
-                        <td>@i.TrackerId</td>
+                        <td>@i.RegistredAt</td>
                     </tr>
                 }
             </table>

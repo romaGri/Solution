@@ -86,7 +86,6 @@ body {
 
 header {
    
-    opacity: 0.6;
     
     background: #fc0; /* Цвет фона */
     padding: 5px;
@@ -171,19 +170,15 @@ tbody tr:hover {
     text-align: center;
 }
 .search-box{
-    text-align: center;
-    margin-left: 110px;
-    margin-bottom: 10px;
-    margin-top: 10px;
     position: absolute;
-    transform: translate(-50%, -50%);
-    background: #2f3640;
+    transform: translateX(10px);
+    background: #e9d26a;
     height: 40px;
     border-radius: 40px;
 }
 
 .search-box:hover  .search-txt {
-    width: 240px;
+    width: 150px;
     padding: 0 6px;
    }
    
@@ -198,7 +193,7 @@ tbody tr:hover {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #2f3640;
+    background: #e9d26a;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,7 +202,7 @@ tbody tr:hover {
     cursor: pointer;
    }
    
-   .search-btn > input {
+   .search-btn  input {
     font-size: 30px;
    }
    
@@ -224,3 +219,9 @@ tbody tr:hover {
     width: 0px;
     font-weight: bold;
    }   
+.message{
+    padding-block-start: 30px;
+}
+i{
+    transform: translate(28px, 8px);
+}

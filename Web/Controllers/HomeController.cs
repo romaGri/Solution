@@ -19,7 +19,6 @@ namespace Web.Controllers
         {
             db = context;
         }
-        
         public async Task<IActionResult> Index(string s, int page = 1)
         {
             IQueryable<Torrent> query;
@@ -28,7 +27,7 @@ namespace Web.Controllers
             if (s == null)
             {
                 count = await db.Torrents.CountAsync();
-                query = db.Torrents.Take(count);
+                query = db.Torrents.Take(count).OrderByDescending(i=>i.RegistredAt);
             }
             else
             {

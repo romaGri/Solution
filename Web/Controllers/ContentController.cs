@@ -29,7 +29,7 @@ namespace TorrentsWebApp.Controllers
             {
                 ForumId = torrent.ForumId,
                 Forums = forum.Value,
-                Content = BBCodeHelper.Format(torrent.Content),
+                Content = BBCodeToHTMLConverter.Format(torrent.Content),
                 Title = torrent.Title,
                 Dir = torrent.Dir,
                 Files = db.Files.Where(f => f.TorrentId == id).ToArray()
