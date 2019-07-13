@@ -4,54 +4,58 @@
 
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - Project Torrents</title>
-    
-	<title>Вертикальное меню</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="~/css/style.css">
+
+    <title>Вертикальное меню</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
 </head>
 <body>
-	
+
     <!--<header>
-		<div class="head">
-			<div class="ico"><a href="#"><img src="~/image/torrent_icon.png"></a></div>	
-		</div>
-	</header>-->
+        <div class="head">
+            <div class="ico"><a href="#"><img src="~/image/torrent_icon.png"></a></div>
+        </div>
+    </header>-->
 
-	<nav id="menuVertical">
-        
-			<a href="#"><img class="ico" src="~/image/icon.png"></a>	
-	
-		<ul>
-			<li><a asp-area="" asp-controller="Forums" asp-action="Index"><div class="img_n"><img src="~/image/earth.png"></div><span>Форумы</span></a></li>
+    <nav id="menuVertical">
 
-			<li><a asp-area="" asp-controller="Home" asp-action="Index"><div class="img_n"><img src="~/image/stat.png" ></div><span>+ Торренты</span></a>
-				<ul>
-					<li><a href="/Home/Index/?true">Все</a></li>
-					<li><a href="">Живые</a></li>
-				</ul>
-			</li>
+        <a href="#"><img class="ico" src="~/image/icon.png"></a>
 
-			<li><div class="search-box">
-    <form asp-controller="Home" asp-action="Index" method="get">
-        
-         <input class="search-txt" type="text" name="s">
-            <input class="search-btn" type="submit" value="" />
-             <i class="fas fa-search"></i>
-      
-    </form>
-			</li>
+        <ul>
+            <li><a asp-area="" asp-controller="Forums" asp-action="Index"><div class="img_n"><img src="~/image/earth.png"></div><span>Форумы</span></a></li>
 
-			<li><a href="#4"><div class="img_n"><img src="~/image/zak.png"></div><span>Закладки</span></a></li>
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index"><div class="img_n"><img src="~/image/stat.png"></div><span>+ Торренты</span></a>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index"asp-route-exist="false" >Все</a></li>
+                    <li><a asp-controller="Home" asp-action="Index"asp-route-exist="true">Живые</a></li>
+                </ul>
+            </li>
 
-			<li><a href="#5"><div class="img_n"><img src="~/image/door.png"></div><span>Выход</span></a></li>
-		</ul>
-	</nav>
-	<div class="menu"><div class="footer">Torrents ViewAppp© 2019<br>
-	<a href="#1"><font color="#9dacaa">Торренты</font></a>
-	</div></div>
+            <li>
+                <div class="search-box">
+                    <form asp-controller="Home" asp-action="Index" method="get">
+                        <input class="search-txt" type="text" name="s">
+                        <input class="search-btn" type="submit" value="" />
+                        <i class="fas fa-search"></i>
+
+                    </form>
+            </li>
+
+            <li><a href="#4"><div class="img_n"><img src="~/image/zak.png"></div><span>Закладки</span></a></li>
+
+            <li><a href="#5"><div class="img_n"><img src="~/image/door.png"></div><span>Выход</span></a></li>
+        </ul>
+    </nav>
+    <div class="menu">
+        <div class="footer">
+            Torrents ViewAppp© 2019<br>
+            <a href="#1"><font color="#9dacaa">Торренты</font></a>
+        </div>
+    </div>
     <div class="container_body">
         <partial name="_CookieConsentPartial" />
-        <main role="main" >
+        <main role="main">
             @RenderBody()
         </main>
     </div>
@@ -60,4 +64,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-	
+

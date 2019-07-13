@@ -23,24 +23,24 @@
         }
     </table>
     <div class="nav_btn">
- @if (Model.PageInfo.HasPreviousPage)
-    {
-        <a asp-action="Index"
-           asp-route-page="@(Model.PageInfo.PageNumber - 1)"
-           class="btn btn-default btn">
-            <i class="glyphicon glyphicon-chevron-left"></i>
-            Назад
-        </a>
-    }
-    @if (Model.PageInfo.HasNextPage)
-    {
-        <a asp-action="Index"
-           asp-route-page="@(Model.PageInfo.PageNumber + 1)"
-           class="btn btn-default btn">
-            Вперед
-            <i class="glyphicon glyphicon-chevron-right"></i>
-        </a>
-    }
+        @if (Model.PageInfo.HasPreviousPage)
+        {
+            <a asp-action="Index"
+               asp-route-page="@(Model.PageInfo.PageNumber - 1)"
+               class="btn btn-default btn">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                Назад
+            </a>
+        }
+        @if (Model.PageInfo.HasNextPage)
+        {
+            <a asp-action="Index"
+               asp-route-page="@(Model.PageInfo.PageNumber + 1)"
+               class="btn btn-default btn">
+                Вперед
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </a>
+        }
     </div>
-   
+
 </body>
