@@ -21,7 +21,7 @@ namespace TorrentsWebApp.Controllers
         {
             var torrent = db.Torrents.FirstOrDefault(c => c.TorrentId == id);
             var forum = db.Forums.FirstOrDefault(f => f.ForumId == torrent.ForumId);
-            var size = long.Parse(torrent.Size) / 1024;
+            var size = long.Parse(torrent.Size) / 1048576;
 
             TorrentDescriptionViewModel viewModel = new TorrentDescriptionViewModel()
             {
