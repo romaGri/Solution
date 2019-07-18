@@ -151,6 +151,9 @@ body{
 	#menuVertical ul li ul li a{
 		left: -141px;
 	}
+	#menuVertical .search-box{
+		width: 57px;
+	}
 
 	span{
 		display: none;
