@@ -32,11 +32,17 @@
 
                     </form>
                     @*<ul>
-                    <li><a asp-controller="Home" asp-action="Index" asp-fragment="&exist=false">По удаленным</a></li>
-                </ul>*@
+                            <li><a asp-controller="Home" asp-action="Index" asp-fragment="&exist=false">По удаленным</a></li>
+                        </ul>*@
             </li>
 
-            <li><a asp-controller="Home" asp-action="Index" asp-route-bigSize="false"><div class="img_n"><img src="~/image/zak.png"></div><span>По размеру</span></a></li>
+            <li>
+               <a> <div class="img_n"><img src="~/image/zak.png"></div><span>По размеру</span></a>
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index" asp-route-bigSize="false">Max</a></li>
+                    <li><a asp-controller="Home" asp-action="Index" asp-route-bigSize="true">Min</a></li>
+                </ul>
+            </li>
 
             <li><a href="#5"><div class="img_n"><img src="~/image/door.png"></div><span>Выход</span></a></li>
         </ul>
@@ -60,5 +66,5 @@
 </html>
 
 @*i have little bit experience in ios development and a little more experience in asp.net. currently i'm work on web application
-is there gonna be an ios in there?
-OS X / iOS stuffing can be divided into three logical levels: the XNU kernel, the POSIX compatibility layer (plus various system daemons/services) and the NeXTSTEP layer that implements the graphics stack, framework and application API*@
+    is there gonna be an ios in there?
+    OS X / iOS stuffing can be divided into three logical levels: the XNU kernel, the POSIX compatibility layer (plus various system daemons/services) and the NeXTSTEP layer that implements the graphics stack, framework and application API*@

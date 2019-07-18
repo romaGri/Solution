@@ -1,5 +1,5 @@
 body{
-	background: #e0e3e5;
+	background: white;
 	font-family: "Roboto", sans-serif, Helvetica, Arial;
 	margin: 0;
 }
@@ -81,7 +81,6 @@ a {
 	text-decoration: none;
 	text-shadow: 2px 2px 3px #222;
 }
-
 
 
 #menuVertical ul li a:hover,

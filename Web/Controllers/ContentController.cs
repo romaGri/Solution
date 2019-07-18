@@ -20,8 +20,8 @@ namespace TorrentsWebApp.Controllers
         public IActionResult Content(int id)
         {
             var torrent = db.Torrents.FirstOrDefault(c => c.TorrentId == id);
-
             var forum = db.Forums.FirstOrDefault(f => f.ForumId == torrent.ForumId);
+            var size = long.Parse(torrent.Size) / 1024;
 
             TorrentDescriptionViewModel viewModel = new TorrentDescriptionViewModel()
             {
@@ -30,8 +30,9 @@ namespace TorrentsWebApp.Controllers
                 Content = BBCodeToHTMLConverter.Format(torrent.Content),
                 Title = torrent.Title,
                 Dir = torrent.Dir,
+                Size = size,
                 Files = db.Files.Where(f => f.TorrentId == id).ToArray()
-            };
+        };
 
 
             return View(viewModel);

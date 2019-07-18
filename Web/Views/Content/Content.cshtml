@@ -18,7 +18,7 @@
         <a href="../Forums/@Model.ForumId"> @Model.Forums</a>
         <h1>@Model.Title</h1>
         <a>@Html.Raw(Model.Content)</a>
-
+        <h1>Общий размер: @Model.Size Kb</h1>
         <h1>@Model.Dir</h1>
         @Html.CreateList(Model.Files.ToArray())
 

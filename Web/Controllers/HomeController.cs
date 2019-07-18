@@ -24,6 +24,9 @@ namespace Web.Controllers
             IQueryable<Torrent> query = db.Torrents;
             int count = await db.Torrents.CountAsync();
             int pageSize = 30;   // количество элементов на странице
+       
+
+
             if (s == null && exist == true)
             {
                 query = db.Torrents.Take(count).Where(t => t.Del == false).OrderByDescending(i => i.RegistredAt);

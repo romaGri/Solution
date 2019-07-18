@@ -14,6 +14,7 @@ namespace Web.Models
         public string Dir { get; set; }
         public string Forums { get; set; }
         public string Title { get;set; }
+        public long Size { get; set; }
         public IEnumerable<File> Files { get; set; }
     }
 }
