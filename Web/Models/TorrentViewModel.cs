@@ -11,5 +11,7 @@ namespace Web.Models
         public IEnumerable<Torrent> torrents { get; set; }
         public PageInfo PageInfo { get; set; }
         public string SearchString { get; set; }
+        public bool Exist { get; set; }
+        public bool BigSize { get; set; }
     }
 }

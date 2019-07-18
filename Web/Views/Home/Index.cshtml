@@ -23,14 +23,14 @@
             <h1 class="display-4">Table Torrents</h1>
             <table class="table">
                 <tr>
-                    <td> ID
-                    <td>Название
+                    
+                    <td > Название
                     <td>Дата Регистрации</td>
                 </tr>
                 @foreach (var i in Model.torrents)
                 {
                     <tr>
-                        <td><a href="../Content/@i.TorrentId" />@i.Id</td>
+                       
                         <td><a href="../Content/@i.TorrentId" /> @i.Title</td>
                         <td>@i.RegistredAt</td>
                     </tr>
@@ -42,6 +42,8 @@
                 <a asp-action="Index"
                    asp-route-page="@(Model.PageInfo.PageNumber - 1)"
                    asp-route-s="@Model.SearchString"
+                   asp-route-exist="@Model.Exist"
+                   asp-route-bigSize="@Model.BigSize"
                    class="btn btn-default btn">
                     <i class="glyphicon glyphicon-chevron-left"></i>
                     Назад
@@ -52,12 +54,14 @@
                 <a asp-action="Index"
                    asp-route-page="@(Model.PageInfo.PageNumber + 1)"
                    asp-route-s="@Model.SearchString"
+                   asp-route-exist="@Model.Exist"
+                   asp-route-bigSize="@Model.BigSize"
                    class="btn btn-default btn">
                     Вперед
                     <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
             }
-            
+
         </div>
     }
     else

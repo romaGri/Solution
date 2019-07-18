@@ -23,8 +23,6 @@ namespace TorrentsWebApp.Controllers
 
             var forum = db.Forums.FirstOrDefault(f => f.ForumId == torrent.ForumId);
 
-            //torrent.Content = BBCodeHelper.Format(torrent.Content);
-            //torrent.Files = db.Files.Where(f => f.TorrentId == id).ToArray();
             TorrentDescriptionViewModel viewModel = new TorrentDescriptionViewModel()
             {
                 ForumId = torrent.ForumId,
@@ -33,8 +31,7 @@ namespace TorrentsWebApp.Controllers
                 Title = torrent.Title,
                 Dir = torrent.Dir,
                 Files = db.Files.Where(f => f.TorrentId == id).ToArray()
-
-        };
+            };
 
 
             return View(viewModel);

@@ -19,7 +19,7 @@ namespace Web.Controllers
         {
             db = context;
         }
-        public async Task<IActionResult> Index(string s, int page = 1, bool exist = true)
+        public async Task<IActionResult> Index(string s, int page = 1, bool exist = true, bool bigSize = true)
         {
             IQueryable<Torrent> query = db.Torrents;
             int count = await db.Torrents.CountAsync();
@@ -31,6 +31,10 @@ namespace Web.Controllers
             if (s == null && exist == false)
             {
                 query = db.Torrents.Take(count).OrderByDescending(i => i.RegistredAt);
+            }
+            if (s == null && bigSize == false)
+            {
+                query = db.Torrents.Take(count).OrderByDescending(i => Convert.ToInt64(i.Size));
             }
             if (s != null)
             {
@@ -44,7 +48,9 @@ namespace Web.Controllers
             {
                 PageInfo = pageViewModel,
                 torrents = torents,
-                SearchString = s
+                SearchString = s,
+                Exist = exist,
+                BigSize = bigSize
             };
 
             return View(viewModel);

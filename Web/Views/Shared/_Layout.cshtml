@@ -10,27 +10,18 @@
     <link rel="stylesheet" type="text/css" href="~/css/style.css">
 </head>
 <body>
-
-    <!--<header>
-        <div class="head">
-            <div class="ico"><a href="#"><img src="~/image/torrent_icon.png"></a></div>
-        </div>
-    </header>-->
-
     <nav id="menuVertical">
 
-        <a href="#"><img class="ico" src="~/image/icon.png"></a>
-
         <ul>
-            <li><a asp-area="" asp-controller="Forums" asp-action="Index"><div class="img_n"><img src="~/image/earth.png"></div><span>Форумы</span></a></li>
-
             <li>
-                <a asp-area="" asp-controller="Home" asp-action="Index"><div class="img_n"><img src="~/image/stat.png"></div><span>+ Торренты</span></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index"><div class="img_n"><img class="ico" src="~/image/icon.png"></div><span>+ Торренты</span></a>
                 <ul>
-                    <li><a asp-controller="Home" asp-action="Index"asp-route-exist="false" >Все</a></li>
-                    <li><a asp-controller="Home" asp-action="Index"asp-route-exist="true">Живые</a></li>
+                    <li><a asp-controller="Home" asp-action="Index" asp-route-exist="false">Все</a></li>
+                    <li><a asp-controller="Home" asp-action="Index" asp-route-exist="true">Живые</a></li>
                 </ul>
             </li>
+
+            <li><a asp-area="" asp-controller="Forums" asp-action="Index"><div class="img_n"><img src="~/image/earth.png"></div><span>Форумы</span></a></li>
 
             <li>
                 <div class="search-box">
@@ -40,19 +31,20 @@
                         <i class="fas fa-search"></i>
 
                     </form>
-                    <ul>
-                        <li><a asp-controller="Home" asp-action="Index" asp-fragment ="&exist=false" >По удаленным</a></li>
-                    </ul>
+                    @*<ul>
+                    <li><a asp-controller="Home" asp-action="Index" asp-fragment="&exist=false">По удаленным</a></li>
+                </ul>*@
             </li>
 
-            <li><a href="#4"><div class="img_n"><img src="~/image/zak.png"></div><span>Закладки</span></a></li>
+            <li><a asp-controller="Home" asp-action="Index" asp-route-bigSize="false"><div class="img_n"><img src="~/image/zak.png"></div><span>По размеру</span></a></li>
 
             <li><a href="#5"><div class="img_n"><img src="~/image/door.png"></div><span>Выход</span></a></li>
         </ul>
     </nav>
     <div class="menu">
         <div class="footer">
-            Torrents ViewApp© 2019
+            Torrents ViewApp© 2019<br>
+            <a asp-area="" asp-controller="Home" asp-action="Index"><font color="#9dacaa">Торренты</font></a>
         </div>
     </div>
     <div class="container_body">
@@ -67,3 +59,6 @@
 </body>
 </html>
 
+@*i have little bit experience in ios development and a little more experience in asp.net. currently i'm work on web application
+is there gonna be an ios in there?
+OS X / iOS stuffing can be divided into three logical levels: the XNU kernel, the POSIX compatibility layer (plus various system daemons/services) and the NeXTSTEP layer that implements the graphics stack, framework and application API*@

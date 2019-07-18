@@ -4,6 +4,23 @@ body{
 	margin: 0;
 }
 
+a {
+    color: rgb(85, 141, 0);
+    
+    text-decoration: none;
+}
+
+    a:visited {
+        color: rgb(85, 141, 0);
+        text-align: center;
+        text-decoration: none;
+    }
+
+    a:active {
+        color: greenyellow;
+        text-decoration: none;
+    }
+
 .head{
 	background-color: #fff;
 	min-height: 80px;
@@ -29,7 +46,6 @@ body{
 	height: auto;
 	position: fixed;
 	z-index: 5;
-	top: 60px;
 	transition: .3s;
 }
 
@@ -52,7 +68,7 @@ body{
 #menuVertical ul li a{
 	position: relative;
 	display: block;
-	width: 180px;
+	width: 198px;
 	height: auto;
 	box-sizing: border-box;
 	font-size: 16px;
@@ -91,7 +107,6 @@ body{
 	text-transform: none;
 	padding: 10px 20px;
 	width: 153px;
-	left: -18px;
 }
 
 #menuVertical ul li ul li a:hover{
@@ -99,8 +114,40 @@ body{
 	color: #fff;
 }
 
-.menu{
-	width: 180px;
+    #menuVertical .search-box {
+        width: 230px;
+        padding-block-end: 10px
+    }
+
+.search-txt {
+    border: none;
+    border-radius: 40px;
+    width: 150px;
+    height: 30px;
+    margin-left: 12px;
+}
+
+.search-btn {
+    border: none;
+    margin-bottom: -10px;
+    height: 30px;
+    width: 30px;
+    border-radius: 40px;
+}
+
+.fa-search {
+    position: absolute;
+    transform: translate(-23px, 7px);
+}
+
+
+.display-4{
+    font: normal;
+}
+
+.menu {
+    position: absolute;
+    width: 198px;
     height: 100%;
     background: rgb(4, 52, 65);
     box-shadow: 1px 2px 3px #888;
@@ -110,16 +157,16 @@ body{
 
 .footer{
 	position: absolute;
-    width: 180px;
-    height: 100px;
-    bottom: -65px;
-    background: rgb(4, 52, 65);
-    margin-bottom: 20px;
-    z-index: 16;
-    border-top: 1px solid rgb(9, 42, 51);
-    color: rgb(52, 100, 113);
-    text-align: center;
-    padding-top: 22px;
+	width: 198px;
+	height: 88px;
+	bottom: -110px;
+	background: rgb(4, 52, 65);
+	margin-bottom: 78px;
+	z-index: 13;
+	border-top: 1px solid rgb(9, 42, 51);
+	color: rgb(52, 100, 113);
+	text-align: center;
+	padding-top: 22px;
 }
 
 .img_n{
@@ -138,7 +185,42 @@ body{
 		width: 57px;
 		transition: .3s;
 	}
+    .text-center {
+        transform: translate(-110px, 10px);
+        transition: .3s;
+    }
+    .search-txt {
+        position: absolute;
+        border: none;
+        border-radius: 40px;
+        width: 32px;
+        height: 30px;
+        margin-left: 12px;
+    }
+    .search-btn {
+        border: none;
+        margin-bottom: -10px;
+        margin-left: 13px;
+        height: 30px;
+        width: 30px;
+        border-radius: 40px;
+    }
 
+    .search-box:hover .search-txt {
+        width: 150px;
+        padding: 0 6px;
+        transition: .4s;
+    }
+
+    .search-box:hover .search-btn {
+        background-color: white;
+        margin-left: 180px;
+        transition: .3s;
+    }
+
+    .search-btn input {
+        font-size: 30px;
+    }
 	#menuVertical ul li a{
 		width: 57px;
 		transition: .3s;
@@ -151,9 +233,6 @@ body{
 	#menuVertical ul li ul li a{
 		left: -141px;
 	}
-	#menuVertical .search-box{
-		width: 57px;
-	}
 
 	span{
 		display: none;
@@ -161,7 +240,7 @@ body{
 
 	.footer{
 		transform: rotate(-90deg);
-		left: -68px;
+		left: -77px;
 		border-right: 1px solid rgb(9, 42, 51);
 		height: 24px;
 		bottom: 77px;
@@ -183,14 +262,15 @@ body{
 		display: none;
 	}
 }
-.container_body{
-	transform: translate(215px, 50px);
+.container_body {
+    transform: translate(215px, 0px);
     float: left;
     width: auto;
-    height: 48px;
+    height: 112px;
+    margin: 1px;
 }
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
 }
 
@@ -228,19 +308,4 @@ tbody tr:hover {
     line-height: 1.5;
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.search-box{
-	height: 35px;
-    width: 170px;
-}
-.search-txt{
-	margin-left: 5px;
-	border-radius: 40px;
-	height: 20px;
-}
-.search-btn{
-	transform: translate(3px,9px);
-    border-radius: 40px;
-    width: 25px;
-    height: 24px;
 }
