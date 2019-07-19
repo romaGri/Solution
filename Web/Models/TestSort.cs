@@ -18,28 +18,27 @@ namespace Web.Models
             db = context;
         }
 
-
-        public bool exist_torrent { get; set; }
-        public bool bigSize_torrent { get; set; }
+        public bool Exist_torrent { get; set; }
+        public bool BigSize_torrent { get; set; }
         public IQueryable<Torrent> Sort(string s)
         {
 
             IQueryable<Torrent> query = db.Torrents;
             int count = db.Torrents.Count();
 
-            if (s == null && exist_torrent == true)
+            if (s == null && Exist_torrent == true)
             {
                 query = db.Torrents.Take(count).Where(t => t.Del == false).OrderByDescending(i => i.RegistredAt);
             }
-            if (s == null && exist_torrent == false)
+            if (s == null && Exist_torrent == false)
             {
                 query = db.Torrents.Take(count).OrderByDescending(i => i.RegistredAt);
             }
-            if (s == null && bigSize_torrent == false)
+            if (s == null && BigSize_torrent == false)
             {
                 query = db.Torrents.Take(count).OrderByDescending(i => Convert.ToInt64(i.Size));
             }
-            if (s == null && bigSize_torrent == true)
+            if (s == null && BigSize_torrent == true)
             {
                 query = db.Torrents.Take(count).OrderBy(i => Convert.ToInt64(i.Size));
             }

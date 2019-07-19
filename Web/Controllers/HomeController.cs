@@ -29,8 +29,8 @@ namespace Web.Controllers
 
             TestSort test = new TestSort(db)
             {
-                exist_torrent = exist,
-                bigSize_torrent = bigSize
+                Exist_torrent = exist,
+                BigSize_torrent = bigSize
             };
 
             var query = test.Sort(s);
@@ -43,8 +43,8 @@ namespace Web.Controllers
                 PageInfo = pageViewModel,
                 torrents = torents,
                 SearchString = s,
-                Exist = test.exist_torrent,
-                BigSize = test.bigSize_torrent
+                Exist = test.Exist_torrent,
+                BigSize = test.BigSize_torrent
             };
 
             return View(viewModel);
