@@ -146,7 +146,7 @@ a {
 
 .menu {
     position: absolute;
-    width: 198px;
+    width: 200px;
     height: 100%;
     background: rgb(4, 52, 65);
     box-shadow: 1px 2px 3px #888;
@@ -262,7 +262,7 @@ a {
 	}
 }
 .container_body {
-    transform: translate(215px, 0px);
+    transform: translate(230px, 0px);
     float: left;
     width: auto;
     height: 112px;

@@ -2,7 +2,7 @@
 using System.Linq;
 using Ifrastructure;
 using Microsoft.AspNetCore.Mvc;
-using TorrentsWebApp.Helpers;
+using TorrentsWebApp.HtmlHelpers;
 using Web.Models;
 
 namespace TorrentsWebApp.Controllers

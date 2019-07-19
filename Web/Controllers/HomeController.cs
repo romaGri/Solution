@@ -13,36 +13,27 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
+
+
         torrentsdbContext db;
 
         public HomeController(torrentsdbContext context)
         {
             db = context;
         }
-        public async Task<IActionResult> Index(string s, int page = 1, bool exist = true, bool bigSize = true)
+        public async Task<IActionResult> Index(bool exist, bool bigSize, string s, int page = 1)
         {
-            IQueryable<Torrent> query = db.Torrents;
+
             int count = await db.Torrents.CountAsync();
             int pageSize = 30;   // количество элементов на странице
-       
 
+            TestSort test = new TestSort(db)
+            {
+                exist_torrent = exist,
+                bigSize_torrent = bigSize
+            };
 
-            if (s == null && exist == true)
-            {
-                query = db.Torrents.Take(count).Where(t => t.Del == false).OrderByDescending(i => i.RegistredAt);
-            }
-            if (s == null && exist == false)
-            {
-                query = db.Torrents.Take(count).OrderByDescending(i => i.RegistredAt);
-            }
-            if (s == null && bigSize == false)
-            {
-                query = db.Torrents.Take(count).OrderByDescending(i => Convert.ToInt64(i.Size));
-            }
-            if (s != null)
-            {
-                query = db.Torrents.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%")).OrderByDescending(i => i.RegistredAt);
-            }
+            var query = test.Sort(s);
 
             var torents = await query.Skip((page - 1) * pageSize).Take(pageSize).ToArrayAsync();
 
@@ -52,8 +43,8 @@ namespace Web.Controllers
                 PageInfo = pageViewModel,
                 torrents = torents,
                 SearchString = s,
-                Exist = exist,
-                BigSize = bigSize
+                Exist = test.exist_torrent,
+                BigSize = test.bigSize_torrent
             };
 
             return View(viewModel);
