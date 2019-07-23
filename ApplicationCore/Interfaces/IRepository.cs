@@ -9,7 +9,7 @@ namespace ApplicationCore.Interfaces
     public interface IRepository
     {
 
-        IQueryable<Torrent> torrents { get; }
+        IEnumerable<Torrent> torrents { get; }
         IQueryable<Forum> forums { get; }
         IQueryable<File> files { get; }
 

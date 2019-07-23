@@ -17,7 +17,7 @@ namespace Ifrastructure
         }
         
 
-        public IQueryable<Torrent> torrents { get { return _db.Torrents; } }
+        public IEnumerable<Torrent> torrents { get { return _db.Torrents; } }
 
         public IQueryable<Forum> forums { get { return _db.Forums; } }
 
