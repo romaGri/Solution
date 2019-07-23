@@ -1,4 +1,4 @@
-﻿@using Web.Models
+﻿@using Web.Models.ViewModels;
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/5602962e66.js"></script>
 </head>
 <body>
-
+    
     @if (Model.torrents.Any())
     {
         @if (!string.IsNullOrEmpty(Model.SearchString))

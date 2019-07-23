@@ -4,10 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using ApplicationCore.Entities;
+using ApplicationCore.Interfaces;
 using Ifrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Models;
+using Web.Models.ViewModels;
+using Web.Services;
 
 namespace Web.Controllers
 {
@@ -15,27 +18,27 @@ namespace Web.Controllers
     {
 
 
-        torrentsdbContext db;
+        IRepository db;
 
-        public HomeController(torrentsdbContext context)
+        public HomeController(IRepository context)
         {
             db = context;
         }
         public async Task<IActionResult> Index(bool exist, bool bigSize, string s, int page = 1)
         {
 
-            int count = await db.Torrents.CountAsync();
+            int count =  db.torrents.Count();
             int pageSize = 30;   // количество элементов на странице
 
-            TestSort test = new TestSort(db)
+            SortService test = new SortService(db)
             {
-                Exist_torrent = exist,
-                BigSize_torrent = bigSize
+                exisTorrent = exist,
+                bigSizeTorrent = bigSize
             };
 
             var query = test.Sort(s);
 
-            var torents = await query.Skip((page - 1) * pageSize).Take(pageSize).ToArrayAsync();
+            var torents =  query.Skip((page - 1) * pageSize).Take(pageSize).ToArray();
 
             PageInfo pageViewModel = new PageInfo(count, page, pageSize);
             TorrentViewModel viewModel = new TorrentViewModel
@@ -43,18 +46,18 @@ namespace Web.Controllers
                 PageInfo = pageViewModel,
                 torrents = torents,
                 SearchString = s,
-                Exist = test.Exist_torrent,
-                BigSize = test.BigSize_torrent
+                Exist = test.exisTorrent,
+                BigSize = test.bigSizeTorrent
             };
 
             return View(viewModel);
         }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }
 

@@ -1,3 +1,4 @@
+using ApplicationCore.Interfaces;
 using Ifrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,12 +25,8 @@ namespace Web
             string connection = Configuration.GetConnectionString("DefaultConnection1");
             services.AddDbContext<torrentsdbContext>(o => o.UseSqlServer(connection));
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-            });
-
+            
+            services.AddScoped(typeof(IRepository), typeof(EFRepository));
             services.AddMemoryCache();
             services.AddControllersWithViews();
             services.AddRazorPages();

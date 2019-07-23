@@ -6,9 +6,7 @@ namespace Ifrastructure
 {
     public partial class torrentsdbContext : DbContext
     {
-        public torrentsdbContext()
-        {
-        }
+       
 
         public torrentsdbContext(DbContextOptions<torrentsdbContext> options)
             : base(options)
