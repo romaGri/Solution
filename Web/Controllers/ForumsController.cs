@@ -15,7 +15,7 @@ namespace Web.Controllers
     {
       
         int _pageSize = 30;
-        IRepository db;
+        readonly IRepository db;
 
         public ForumsController(IRepository context)
         {

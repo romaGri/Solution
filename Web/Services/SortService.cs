@@ -21,35 +21,36 @@ namespace Web.Services
 
         public bool exisTorrent { get; set; }
         public bool bigSizeTorrent { get; set; }
-        public IEnumerable<Torrent> Sort(string s)
+        public List<Torrent> Sort(string s)
         {
 
+            
             IEnumerable<Torrent> query = db.torrents;
             int count = db.torrents.Count();
+            List<Torrent> listTorrents = query.Take(count).Where(t => t.Del == false).ToList();
 
             if (s == null && exisTorrent == true)
             {
-                query = db.torrents.Take(count).Where(t => t.Del == false).OrderByDescending(i => i.RegistredAt);
+               listTorrents = query.Take(count).Where(t => t.Del == false).ToList();
             }
             if (s == null && exisTorrent == false)
             {
-                query = db.torrents.Take(count).OrderByDescending(i => i.RegistredAt);
+                listTorrents = query.Take(count).ToList();
             }
-            if (s == null && bigSizeTorrent == false)
+            if (s == null && bigSizeTorrent == true && exisTorrent == true)
             {
-                query = db.torrents.Take(count).OrderByDescending(i => Convert.ToInt64(i.Size));
+                listTorrents = query.Take(count).OrderByDescending(i => Convert.ToInt64(i.Size)).ToList();
             }
-            if (s == null && bigSizeTorrent == true)
+            if (s == null && bigSizeTorrent == false && exisTorrent == true)
             {
-                query = db.torrents.Take(count).OrderBy(i => Convert.ToInt64(i.Size));
+                listTorrents = query.Take(count).OrderBy(i => Convert.ToInt64(i.Size)).ToList();
             }
             if (s != null)
             {
-                query = db.torrents.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%")).OrderByDescending(i => i.RegistredAt);
+                listTorrents = query.Where(p => string.IsNullOrWhiteSpace(s) || EF.Functions.Like(p.Title, $"%{s}%")).ToList();
             }
 
-            return query;
+            return listTorrents;
         }
     }
 }
-//bool exist, bool bigSize

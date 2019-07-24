@@ -24,7 +24,6 @@ namespace Web
 
             string connection = Configuration.GetConnectionString("DefaultConnection1");
             services.AddDbContext<torrentsdbContext>(o => o.UseSqlServer(connection));
-
             
             services.AddScoped(typeof(IRepository), typeof(EFRepository));
             services.AddMemoryCache();
@@ -47,6 +46,7 @@ namespace Web
             }
 
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseCookiePolicy();
