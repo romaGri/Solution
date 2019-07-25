@@ -1,29 +1,66 @@
 ﻿using ApplicationCore.Entities;
 using ApplicationCore.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Ifrastructure
 {
-    public class EFRepository : IRepository
+
+    public class EFRepository<T> : IRepository<T> where T : BaseEntity
     {
+        private readonly torrentsdbContext _eFContext;
 
-        private readonly torrentsdbContext _db;
-        public EFRepository(torrentsdbContext db )
+        public EFRepository(torrentsdbContext eFContext)
         {
-            _db = db;
+            _eFContext = eFContext;
         }
-        
 
-        public IEnumerable<Torrent> torrents { get { return _db.Torrents; } }
+        public Task<int> CountAsync(ISpecification<T> specification)
+        {
+            return ApplySpecification(specification).CountAsync();
+        }
 
-        public IQueryable<Forum> forums { get { return _db.Forums; } }
+        public async Task<T> GetByID(int id)
+        {
+            return await _eFContext.Set<T>().FindAsync(id);
+        }
 
-        public IQueryable<File> files { get { return _db.Files; } }
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> specification)
+        {
+            return await ApplySpecification(specification).ToListAsync();
+        }
+
+        public IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_eFContext.Set<T>().AsQueryable(), spec);
+        }
+
+        public async Task<IReadOnlyList<int>> GetPopularEntriesAsync(int count, Expression<Func<T, int>> expression)
+        {
+            return await _eFContext.Set<T>().GroupBy(expression)
+                                            .OrderByDescending(x => x.Count())
+                                            .Take(count)
+                                            .Select(x => x.Key)
+                                            .ToListAsync();
+        }
+
+        public async Task<IReadOnlyList<T>> GetListByIDsAsync(IReadOnlyList<int> iDs)
+        {
+            return await _eFContext.Set<T>().Where(x => iDs.Any(z => z == x.Id)).ToListAsync();
+        }
+
+        public async Task<long> GetMaxValueAsync(Expression<Func<T, long>> expression)
+        {
+            return await _eFContext.Set<T>().MaxAsync(expression);
+        }
+
+
     }
 
-   
 
 }

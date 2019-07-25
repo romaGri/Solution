@@ -18,27 +18,27 @@ namespace Web.Controllers
     {
 
 
-        IRepository db;
+        IRepository<T> db;
 
-        public HomeController(IRepository context)
+        public HomeController(IRepository<T> context)
         {
             db = context;
         }
         public async Task<IActionResult> Index(bool exist, bool bigSize, string s, int page = 1)
         {
 
-            int count =  db.torrents.Count();
+            int count = db.torrents.Count();
             int pageSize = 30;   // количество элементов на странице
 
-            SortService test = new SortService(db)
-            {
-                exisTorrent = exist,
-                bigSizeTorrent = bigSize
-            };
 
-            var query = test.Sort(s);
+            SortService sortBySize = new SortService(db, bigSize);
+            FilterTorrentsService filter = new FilterTorrentsService(db, exist);
+            
+            var query = sortBySize.Sort(s) ;
 
-            var torents =  query.Skip((page - 1) * pageSize).Take(pageSize).ToArray();
+            
+
+            var torents = query.Skip((page - 1) * pageSize).Take(pageSize).ToArray();
 
             PageInfo pageViewModel = new PageInfo(count, page, pageSize);
             TorrentViewModel viewModel = new TorrentViewModel
@@ -46,8 +46,8 @@ namespace Web.Controllers
                 PageInfo = pageViewModel,
                 torrents = torents,
                 SearchString = s,
-                Exist = test.exisTorrent,
-                BigSize = test.bigSizeTorrent
+                Exist = filter.existTorrent,
+                BigSize = sortBySize.bigSizeTorrent
             };
 
             return View(viewModel);

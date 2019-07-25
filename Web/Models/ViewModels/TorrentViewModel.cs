@@ -3,15 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Web.Models.ViewModels.Torrents;
 
 namespace Web.Models.ViewModels
 {
     public class TorrentViewModel
     {
-        public IEnumerable<Torrent> torrents { get; set; }
-        public PageInfo PageInfo { get; set; }
-        public string SearchString { get; set; }
-        public bool Exist { get; set; }
-        public bool BigSize { get; set; }
+        public IEnumerable<TorrentView> Torrents { get; set; }
+        public PaginationInfoViewModel PaginationInfo { get; set; }
+
     }
 }

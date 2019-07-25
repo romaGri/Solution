@@ -14,34 +14,24 @@ namespace Web.Services
 
         IRepository db;
 
-        public SortService(IRepository context)
+        public SortService(IRepository context , bool bigSizeTorrent)
         {
             db = context;
+            this.bigSizeTorrent = bigSizeTorrent; 
         }
 
-        public bool exisTorrent { get; set; }
         public bool bigSizeTorrent { get; set; }
-        public List<Torrent> Sort(string s)
+        public IEnumerable<Torrent> Sort(string s)
         {
-
-            
             IEnumerable<Torrent> query = db.torrents;
             int count = db.torrents.Count();
             List<Torrent> listTorrents = query.Take(count).Where(t => t.Del == false).ToList();
 
-            if (s == null && exisTorrent == true)
-            {
-               listTorrents = query.Take(count).Where(t => t.Del == false).ToList();
-            }
-            if (s == null && exisTorrent == false)
-            {
-                listTorrents = query.Take(count).ToList();
-            }
-            if (s == null && bigSizeTorrent == true && exisTorrent == true)
+            if (s == null && bigSizeTorrent == true)
             {
                 listTorrents = query.Take(count).OrderByDescending(i => Convert.ToInt64(i.Size)).ToList();
             }
-            if (s == null && bigSizeTorrent == false && exisTorrent == true)
+            if (s == null && bigSizeTorrent == false)
             {
                 listTorrents = query.Take(count).OrderBy(i => Convert.ToInt64(i.Size)).ToList();
             }

@@ -5,10 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Mapping\eioiizrz.dkp~" />
+    <None Remove="Models\ViewModels\Search\SearchAndFilterCriteria.cs~RF103eb3e.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0-preview6-19319-03" />
+    <PackageReference Include="Moq" Version="4.12.0" />
   </ItemGroup>
 
   <ItemGroup>

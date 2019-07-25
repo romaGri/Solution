@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace ApplicationCore.Entities
+namespace Web.Models.ViewModels.Torrents
 {
-    public partial class Forum : BaseEntity
+    public class ForumView
     {
         public int Id { get; set; }
-        public int? ForumId { get; set; }
         public string Value { get; set; }
     }
 }
