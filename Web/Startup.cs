@@ -12,7 +12,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.Linq;
 using Web.Filters;
-using AutoMapper;
 
 namespace Web
 {
@@ -31,7 +30,7 @@ namespace Web
 
             string connection = Configuration.GetConnectionString("DefaultConnection1");
             services.AddDbContext<torrentsdbContext>(o => o.UseSqlServer(connection));
-           // services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(typeof(Startup));
             
             services.AddScoped(typeof(IRepository<>), typeof(EFRepository<>));
 
